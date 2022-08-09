@@ -1,0 +1,58 @@
+# Notes taken from XSSRat XSS survival guide Section 4
+# Stored XSS
+
+General
+# More dangerous in areas where users have higher priviledges
+# Attack is automatically executed by browser
+# Make use of filter evasion techniques
+# Analyze HTML code 
+# Investigate out of band channels for blind XSS(customer support)
+# All Data tested in user areas should be tested in admin areas (admin panel)
+# Can be chained with CSRF for account takeover
+# Should host XSSHunter locally
+# Name of file may be vulnerable - file upload
+Requirement
+# Stored data within application 
+# Persistence
+# Stored input is not filtered
+# Must affect users who visit page with attack vector
+# Does not require user interaction
+Attack Scenario
+#1 Attacker stores malicious code into vuln page
+#2 User authenticates in app
+#3 User visits vuln page
+#4 Malicious code executes
+Objective
+# Identify stored input & where it is reflect on client's side
+# Assess input they accept & test what passes any filter
+Tools
+# XSS Assistance Greasemonkey script - allows users to test web app for XSS
+# BeEF (Browser exploitation framework) - Professional tool to demo the impact of browser vuln
+# XSSHunter 
+Black box testing
+# User/Profile page - Application allows user to edit/change profile details (First/last name, nickname, avatar, pictures, addresses, etc)
+# Shopping cart - Application allows user to store items in cart which can be reviewed later
+# File Manager - Application allows file uploads 
+# Application Settings/preferences - Application that allows users to set preferences
+# Forum/Message board - Application permits exchange of posts among users 
+# Blog - blog application permits users submitting comments
+# Log - Application stores user input in logs
+Gray Box testing 
+# Can craft better payloads with insight from source
+# Access back-end to check if/how input is stored 
+# Analyze source code to understand how stored input is rendered
+# Analyze app responses - confirm/deny input validation controls
+# Use front-end for testing encoding - special/invalid characters
+Blind XSS w/ BeEF
+#1 Inject Javascript Hook - Communicates with attacker's browser exploit framework
+#2 Wait for (app) user to view vuln page - stored input is displayed
+#3 Control (app) user's browser w/ BeEF console
+
+Stored XSS Quiz
+# '"><img src=x>dsdqsd - best XSS attack string
+# &lt; / %3c / %26lt; - < encoded
+# <img src=x onerror=alert()> - XSS HMTL injection context 
+# Test every parameter & see where it's stored on system & rendered by page - How to test stored XSS
+# Assess accepted input and whether it passes filters && identify stored input and where it's reflected on client side - test objectives
+# Design step > waiting step > execution step - Modus operandi
+# unsanitized input passed onto target's storage and recalled later && every user that visits pages will be affected by attack - What is stored XSS 

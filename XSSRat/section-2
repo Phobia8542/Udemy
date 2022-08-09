@@ -1,0 +1,18 @@
+# Notes taken from XSSRat XSS survival guide
+# The XSS Contexts
+
+HMTL Context: https://hackxpert.com/labs/RXSS/GET/10.php
+# Insert random input and inspect page for results
+# Insert tags to test response
+# Trigger as few filters as possible 
+# Session cookies & JWT are mostly protected
+HTML Comment Context: https://hackxpert.com/labs/RXSS/GET/20.php
+# Brutelogic XSS Cheat sheet
+# Use HTML comments to break out of HMTL tags
+HTML Tag Attribute Injection: https://hackxpert.com/labs/RXSS/GET/30.php
+# Test ' " ` to escape
+# Use begin/end of tags to escape
+Javascript Injection: https://hackxpert.com/labs/RXSS/GET/40.php
+# Do not use HTML to break out of JS
+# JS functions are used to escape
+# Can also be DOM injection

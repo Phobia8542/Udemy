@@ -1,0 +1,20 @@
+# Notes taken from XSSRat XSS survival guide course on Udemy
+# VB XSS
+
+General
+# Similar to JS XSS - unsanitized input leads to XSS
+# <img src=x> - If it attempts to render; examine further
+# HMTL controller encoding MUST be done everywhere
+Defensive measures
+# HTML encoding of view - <%=Html.Encode(feedback.Message)%>
+# HTML encodeing of controller - newFeedback.Message = Server.HtmlEncode(message)
+Example: Unsanitized input  
+
+<% For Each feedback As CustomerFeedback.Feedba
+ck In ViewData.Model% >
+<p> 
+<%=feedback.EntryDate.ToShortTimeString()%> --
+<%=feedback.Message%> 
+</p> 
+<% Next %> 
+</asp:Content>

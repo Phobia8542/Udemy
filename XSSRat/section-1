@@ -1,0 +1,75 @@
+# Notes taken from XSSRat XSS Survival Guide
+# What is XSS
+
+General
+# XSS is the result of unsanitized input
+# XSS can happen in any scripting language
+# XSS is most common in JS
+# Can occur with POST calls
+# In order to execute XSS you must break out of tags 
+# Craft payload based on context
+# Be prepared to test multiple payloads
+# Test every location that stores user input
+# White/Blacklist filters (patterned based)
+# Use URL encoding for filters (Can double or triple encode)
+# Doubling up on blacklisted words can break filters
+# Always look to raise impact (Steal cookies, Keylogging, Steal data, execute JS, etc) 
+Reflected
+# Reflected XSS does not get store on the DB
+Stored
+# Stored XSS can read & write to the DB
+# A random user can prompt a stored XSS
+# Self XSS can only be done on the attacker's account (Can still be escalated)
+# Stored XSS can cause Self XSS
+# Test payloads based on where the values reflect (HTML, JS, Attributes, etc)
+DOM & Source
+# DOM XSS is done through DOM sinks
+# DOM sinks: Where user input enters the Document Object Model
+# DOM sinks can be looked up (Portswigger, JS, Jquery, etc)
+# Common source of DOM XSS:
+windows.location
+Usually in query string (?)
+Fragment portion of URL (#)
+# DOM XSS happens within query string parameters
+# Fragment portions are usually reflected XSS (only read by browser not by DB)
+# Both DOM & Source XSS can happen
+# DOM & Source XSS can both be stored and reflected
+# Place random values into source to test results 
+# Inspect HTML using DEVELOPER TOOLs only
+# View source doesn't account for DOM
+# User input is changed from DOM source to DOM sink
+Blind
+# Blind XSS relies on out of band servers
+# Server required for Blind XSS call back 
+# Can be stored & reflected
+# Is another form of Stored XSS
+Mutation
+# Sends broken attack vector and browser tries to repair it
+# Found in 2013
+# Bypassed DOM
+CSTI - Client-Side Template Injection
+# Effects Front-end template engines like angular JS and vue JS 
+
+DOM Syntax:
+
+# var search = document.getElementByld('search'.value;
+# var results = document.getElementByld('results');
+# results.innerHTML = 'You searched for: ' + search;
+# Results.innerHTML <<< DOM Sink
+
+DOM Sinks
+
+# Eval()
+# InnerHTML
+
+XSS example syntax:
+
+# example.com?Name=<img src=x onerror=confirm()>
+# "><script>confirm()</script>
+# '</script><script>alert(1)</script>
+
+Attack vector checklist:
+
+# JS: "'`
+# HTML: <img src=x>
+# HTML Attribute: '>">`>

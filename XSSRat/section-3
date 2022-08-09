@@ -1,0 +1,43 @@
+# Notes taken from XSSRat Survial guide Section 3: Reflected XSS
+# Reflected XSS
+
+General
+# First-order or type 1 XSS - named by OWASP
+# Identify where values are reflected in response
+# Filter evasion cheat sheets
+# Judge IMPACT REALISTICALLY
+# Note special characters that are not properly encoded, replaced or filtered
+Definition
+# Injection must be executable code within a single HTTP reponse
+# Not stored in application
+# Not persistent
+# Only effects user who clicked malicious link
+# Attack vector belongs to URI or http params
+# Not processed properly (filtered or sanitized) and returned to victim
+Methods
+#1 Design step: Attacker creates & tests a (offending) URI
+#2 Social Engineering step: Attacker convinces victim to load URI
+#3 Execution step: Execution of payload on victim's browser
+Encoding
+# %3c = <
+# %3e = >
+# %3cscript%3e
+Detect input vectors (user controller variables & parameters)
+# HTTP parameters
+# POST parameters
+# POST data
+# Hidden fields
+# Predefined radio or selection values
+Tools
+# XSStrike - Advanced XSS detection suite
+# PHP Charset Encoder (PCE) - Encode arbitrary text to & from 65 charset for crafted payloads
+# Hackvertor - Online tool for encoding & obfuscation of Javascript (or any string input)
+# XSS-Proxy - Advanced XSS attack tool
+# rat-proxy - Semi-automated passive audit tool
+# Burp Proxy - Proxy server for testing web apps
+# OWASP Zed Attack Proxy (ZAP) - Proxy server for attacking & testing web apps (built-in scanner)
+References
+# https://resources.sei.cmu.edu/asset_files/WhitePaper/2000_019_001_496188.pdf
+# https://www.cgisecurity.com/xss-faq.html
+# http://www.technicalinfo.net/papers/CSS.html
+# https://techzoom.net/publications

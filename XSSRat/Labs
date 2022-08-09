@@ -1,0 +1,21 @@
+# Below is the link for all the labs, instructions & solutions
+
+https://hackxpert.com/RXSS/GET/
+
+10.php: ">John
+# Inspect page
+# Search for "John"
+# Use end tag to escape ">John
+20.php: -->John
+# Inspect page
+# Searched for "John"
+# Use --> to escape
+30.php: '>John (Second field)
+# Inspect page
+# Searched for "John"
+# Used second line to break out of first tag '>John
+40.php: 
+# Inspected page & searched for John
+# Got a response with ">John
+# Most responses showed '); above the field
+

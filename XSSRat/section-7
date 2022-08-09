@@ -1,0 +1,27 @@
+# Notes taken from XSSRat XSS Surival guide course on Udemy
+# DOM XSS
+
+General
+# Inspecting source is not the same as inspecting DOM
+# DOM source is passed into DOM sink then code is executed - eval(), document.write(), etc
+# DOM is similar to root directories - sits behind source
+# NEED to use developer tools to view DOM
+# Stored and Reflected varients
+DOM sink
+# types - Document sink / Location sink / Execution sink
+Document sink
+# 
+DOM Source
+# Common DOM sources
+# document.URL
+# document.documentURI
+# document.URLUnencoded
+# document.baseURI
+# location
+# document.cookie
+# document.referrer
+# window.name
+# history.pushState
+# history.replaceState
+# localStorage
+# sessionStorage 

